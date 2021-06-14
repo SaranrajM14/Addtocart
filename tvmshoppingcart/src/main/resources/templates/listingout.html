@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Addtocart System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+    <h1>User Details</h1>
+    <table border="none" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    
+                    <th> Name</th>
+                    <th> Mobile Number</th>
+                    <th> Email</th>
+                    <th> Address</th>
+                    <th> City</th>
+                    <th> Pincode</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${user1}">
+                    
+                    <td th:text="${user.Name}"></td>
+                    <td th:text="${user.mobileno}"></td>
+                    <td th:text="${user.emailaddress}"></td>
+                    <td th:text="${user.address}"></td>
+                    <td th:text="${user.city}"></td>
+                    <td th:text="${user.pincode}"></td>
+                    </tr>
+            </tbody>
+        </table>
+        <h1>Addtocart Avilable List</h1>
+
+       
+
+        <table border="none" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    
+                    <th> product name</th>
+                    <th> product qty</th>
+                    <th> product price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="addtocart : ${listofavial}">
+                    
+                    <td th:text="${addtocart.productname}"></td>
+                    <td th:text="${addtocart.productqty}"></td>
+                    <td th:text="${addtocart.finalprice}"></td>
+                    </tr>
+            </tbody>
+        </table>
+      <h1>Addtocart UnAvilable List</h1>
+       <table border="none" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    
+                    <th> product name</th>
+                    <th> product qty</th>
+                    <th> product price</th>
+                    <th> Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="addtocart1 : ${listofunavial}">
+                    
+                    <td th:text="${addtocart1.productname}"></td>
+                    <td th:text="${addtocart1.productqty}"></td>
+                    <td th:text="${addtocart1.finalprice}"></td>
+                    <td><a th:href="@{/updatewithavilable/{userid1}/{id}(userid1=${addtocart1.userid1},id=${addtocart1.id})}" class="btn btn-danger"> Update to avilable</a></td>
+                    
+                    </tr>
+            </tbody>
+        </table>
+        Totalvalue: [[${total}]] <br/>
+        <h1>Proceed to Pay</h1>
+		<form action="#" th:action="@{/savePayment/{userid1}(userid1=${userid1})}" th:object="${payment} " method="POST">
+            
+            <label>Enter card Number</label> <label><input type="text" size="50"th:field="*{cardno}" placeholder="Enter Card No" class="form-control mb-4 col-4"></label><br>
+
+            <label>Enter Expier Month</label> <label><input type="text" th:field="*{expmonth}" placeholder="Enter Expiere month" class="form-control mb-4 col-4"></label><br>
+
+            <label>Enter Expier Year</label> <label><input type="text" th:field="*{expyear}" placeholder="Enter Expier Year" class="form-control mb-4 col-4"></label>
+
+            <button type="submit" class="btn btn-info col-2"> Place order</button>
+        </form>
+        
+        
+       
+    	 </div>
+        
+</body>
+
+</html>

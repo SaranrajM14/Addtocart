@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Addtocart System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Addtocart List</h1>
+
+       
+
+        <table border="none" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    
+                    <th> product name</th>
+                    <th> product qty</th>
+                    <th> product price</th>
+                    <th> Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="addtocart : ${listAddtocart}">
+                    
+                    <td th:text="${addtocart.productname}"></td>
+                    <td th:text="${addtocart.productqty}"></td>
+                    <td th:text="${addtocart.finalprice}"></td>
+                    <td>
+                    	<a th:href="@{/updateAddtocartItem/{id}(id=${addtocart.id})}" class="btn btn-danger">Qty Update</a> 
+                        <a th:href="@{/deleteAddtocartItem/{userid1}/{id}(userid1=${addtocart.userid1},id=${addtocart.id})}" class="btn btn-danger">Delete</a>
+                    	<a th:href="@{/placepage/{id}(id=${addtocart.id})}" class="btn btn-primary">Buy</a>
+                    </td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <a th:href="@{/placeallproduct/{userid2}(userid2=${userid2})}" class="btn btn-dark">BuyAll</a>
+        
+</body>
+
+</html>

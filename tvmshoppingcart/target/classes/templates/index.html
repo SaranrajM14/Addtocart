@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Addtocart System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>Addtocart List</h1>
+
+       
+
+        <table border="none" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>user id</th>
+                    <th> product id</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="addtocart : ${listAddtocart}">
+                    <td th:text="${addtocart.userid}"></td>
+                    <td th:text="${addtocart.productid}"></td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

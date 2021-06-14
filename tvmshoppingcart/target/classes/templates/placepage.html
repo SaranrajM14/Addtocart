@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>PaymentProcess</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+    <h1>Order page </h1>
+    
+    <h3>User Details</h3>
+        <form action="#" th:action="@{/saveAdd}" th:object="${user}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{userid}" />
+
+           <label> Username</label> <label><input type="text" size="50"th:field="*{Name}" class="form-control mb-4 col-4"></label><br>
+
+           <label> Mobilenumber</label> <label><input type="text" size="50"th:field="*{mobileno}" class="form-control mb-4 col-4" ></label><br>
+			
+		   <label> Email</label> <label><input type="text" size="500"th:field="*{emailaddress}" class="form-control mb-4 col-4" ></label><br>
+		   
+		   <label> Address</label> <label><input type="text" size="5000"th:field="*{address}" class="form-control mb-4 col-4" ></label><br>    
+			
+		   <label> City </label> <label><input type="text" size="50"th:field="*{city}" class="form-control mb-4 col-4" ></label><br>
+		   
+		   <label> Pincode </label> <label><input type="text" size="30"th:field="*{pincode}" class="form-control mb-4 col-4" ></label><br>
+            
+        </form>
+        <h2> Product Details</h2>
+        <form action="#" th:action="@{/saveAddto}" th:object="${addtocart}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{productid}" />
+
+            <label>ProductName</label> <label><input type="text" size="50" th:field="*{productname}" class="form-control mb-4 col-4"></label><br>
+
+            <label>ProductPrice</label> <label><input type="text" th:field="*{finalprice}" class="form-control mb-4 col-4"></label><br>
+			<label>ProductQuantity</label> <label><input type="text" th:field="*{productqty}" class="form-control mb-4 col-4"></label>
+          </form>
+        <h6>Proceed to Pay</h6>
+
+        <hr>
+        
+       <form action="#" th:action="@{/savePayment/{id}(id=${addtocart.id})}" th:object="${payment} " method="POST">
+            
+            <label>Enter card Number</label> <label><input type="text" size="50"th:field="*{cardno}" placeholder="Enter Card No" class="form-control mb-4 col-4"></label><br>
+
+            <label>Enter Expier Month</label> <label><input type="text" th:field="*{expmonth}" placeholder="Enter Expiere month" class="form-control mb-4 col-4"></label><br>
+
+            <label>Enter Expier Year</label> <label><input type="text" th:field="*{expyear}" placeholder="Enter Expier Year" class="form-control mb-4 col-4"></label>
+
+            <button type="submit" class="btn btn-info col-2"> Place order</button>
+        </form>
+
+        <hr>
+    </div>
+        
